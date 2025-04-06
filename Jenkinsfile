@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'source ~/.bashrc && mvn clean package' // Builds the project
+                sh 'mvn clean package' // Builds the project
             }
         }
         stage('Test') {
             steps {
-                sh 'source ~/.bashrc && mvn test' // Runs tests with Maven
+                sh 'mvn test' // Runs tests with Maven
                 // Add test commands here
             }
         }
