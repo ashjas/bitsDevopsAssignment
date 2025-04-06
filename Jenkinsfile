@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package' // Builds the project
+                sh '/var/jenkins_home/maven/bin/mvn clean package' // Builds the project
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test' // Runs tests with Maven
+                sh '/var/jenkins_home/maven/bin/mvn test' // Runs tests with Maven
                 // Add test commands here
             }
         }
