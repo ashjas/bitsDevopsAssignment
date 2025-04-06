@@ -3,19 +3,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '/var/jenkins_home/maven/bin/mvn clean package' // Builds the project
+                retry(3) { // Retry up to 3 times
+                    sh '/var/jenkins_home/maven/bin/mvn clean package' // Builds the project
+                }
             }
         }
         stage('Test') {
             steps {
-                sh '/var/jenkins_home/maven/bin/mvn test' // Runs tests with Maven
-                // Add test commands here
+                retry(3) { // Retry up to 3 times
+                    sh '/var/jenkins_home/maven/bin/mvn test' // Runs tests with Maven
+                }
             }
         }
         stage('Deploy') {
             steps {
-                sh 'cp target/myapp-1.0-SNAPSHOT.jar /var/jenkins_home/testDeploymentArea/myapp/' // Example deployment to a server
-                // Add deploy commands here
+                retry(3) { // Retry up to 3 times
+                    sh 'cp target/myapp-1.0-SNAPSHOT.jar /var/jenkins_home/testDeploymentArea/myapp/' // Example deployment to a server
+                }
             }
         }
     }
