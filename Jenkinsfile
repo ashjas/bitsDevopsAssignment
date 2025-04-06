@@ -14,7 +14,6 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                source abc
                 sh 'cp target/myapp-1.0-SNAPSHOT.jar /var/jenkins_home/testDeploymentArea/myapp/' // Example deployment to a server
                 // Add deploy commands here
             }
@@ -23,7 +22,7 @@ pipeline {
     post {
         failure {
             echo 'Pipeline failed! Sending failure mails...'
-            //mail to: 'team@example.com', subject: 'Build Failed', body: 'Check Jenkins logs.'
+            mail to: 'team@example.com', subject: 'Pipeline Failed', body: 'Check Jenkins logs.'
         }
         success {
             echo 'Pipeline succeeded!'

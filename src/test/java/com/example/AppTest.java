@@ -8,5 +8,6 @@ public class AppTest {
     public void testGreeting() {
         App app = new App();
         assertEquals("Hello from myapp!", app.getGreeting());
+        foo
     }
 }
