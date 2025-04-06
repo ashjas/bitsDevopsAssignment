@@ -3,19 +3,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the application...'
-                // Add build commands here
+                sh 'mvn clean package' // Builds the project
             }
         }
         stage('Test') {
             steps {
-                echo 'Running tests...'
+                sh 'mvn test' // Runs tests with Maven
                 // Add test commands here
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
+                sh 'cp target/myapp-1.0-SNAPSHOT.jar /var/jenkins_home/testDeploymentArea/myapp/' // Example deployment to a server
                 // Add deploy commands here
             }
         }
