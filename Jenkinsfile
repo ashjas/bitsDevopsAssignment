@@ -23,7 +23,7 @@ pipeline {
     post {
         failure {
             echo 'Pipeline failed! Sending failure mails...'
-            mail to: 'team@example.com', subject: 'Build Failed', body: 'Check Jenkins logs.'
+            //mail to: 'team@example.com', subject: 'Build Failed', body: 'Check Jenkins logs.'
         }
         success {
             echo 'Pipeline succeeded!'
