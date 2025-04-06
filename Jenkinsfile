@@ -23,7 +23,6 @@ pipeline {
             }
         }
         stage('Deploying to staging env') {
-            when { branch 'feature/new-feature' } // Only run on main branch
             steps {
                 retry(3) { // Retry up to 3 times
                     sh 'cp target/myapp-1.0-SNAPSHOT.jar /var/jenkins_home/stageDeploymentArea/myapp/' // Example deployment to a server
